@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Brasil Play Cidade Baixa</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --roxo:#a66bff;
+  --roxo2:#6f3bff;
+  --neon:#efe6ff;
+  --dark:#0a0018;
+  --glass:rgba(15,0,35,.65);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Segoe UI',Arial,sans-serif;
+  background:radial-gradient(circle at top,var(--roxo2),var(--dark));
+  color:#fff; overflow-x:hidden;
+}
+
+/* NEON (somente nomes) */
+.neon{
+  color:var(--neon);
+  text-shadow:0 0 6px var(--roxo),0 0 12px var(--roxo),0 0 24px var(--roxo);
+  font-weight:900;
+}
+
+/* Partículas */
+canvas{position:fixed;inset:0;z-index:-2}
+
+/* Header */
+header{text-align:center;padding:75px 20px 40px}
+h1{font-size:3em}
+.subtitle{margin-top:15px;opacity:.9}
+
+/* Marquee */
+.marquee{
+  background:rgba(0,0,0,.55);
+  padding:12px 0; overflow:hidden;
+  box-shadow:0 0 30px var(--roxo);
+}
+.marquee span{display:inline-block;padding-left:100%;animation:scroll 22s linear infinite}
+@keyframes scroll{to{transform:translateX(-100%)}}
+
+/* Menu */
+nav{display:flex;justify-content:center;flex-wrap:wrap;gap:16px;margin:30px}
+nav button{
+  background:transparent;border:2px solid var(--roxo);color:#fff;
+  padding:14px 26px;border-radius:25px;font-weight:800;cursor:pointer;
+  transition:.35s
+}
+nav button:hover{background:var(--roxo);color:#000;box-shadow:0 0 40px var(--roxo);transform:translateY(-4px)}
+
+/* Seções */
+.section{
+  display:none;max-width:1100px;margin:35px auto;
+  background:var(--glass);backdrop-filter:blur(12px);
+  padding:40px;border-radius:35px;
+  box-shadow:0 0 60px rgba(166,107,255,.7);
+  animation:fade .6s ease
+}
+@keyframes fade{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.section h2{color:var(--neon);margin-bottom:22px;text-shadow:0 0 25px var(--roxo)}
+.active{display:block}
+
+/* Botões */
+.btn{
+  display:inline-block;margin:12px;padding:18px 34px;
+  background:linear-gradient(45deg,var(--roxo2),var(--neon));
+  color:#000;font-weight:900;border-radius:30px;text-decoration:none;
+  box-shadow:0 0 45px var(--roxo);transition:.3s
+}
+.btn:hover{transform:scale(1.08)}
+
+/* Cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:30px}
+.card{
+  background:rgba(255,255,255,.08);padding:30px;border-radius:30px;text-align:center;
+  box-shadow:0 0 35px rgba(166,107,255,.8);transition:.4s
+}
+.card:hover{transform:translateY(-10px);box-shadow:0 0 70px rgba(166,107,255,1)}
+.card h3{color:var(--neon);margin-bottom:10px}
+
+/* IP */
+.ip{font-size:1.4em;margin:15px 0}
+.copy{
+  display:inline-block;margin-top:12px;padding:14px 28px;background:var(--neon);
+  color:#000;border-radius:22px;font-weight:900;cursor:pointer
+}
+
+/* Footer */
+footer{text-align:center;padding:50px;opacity:.75}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<header>
+  <h1 class="neon">BRASIL PLAY CIDADE BAIXA</h1>
+  <p class="subtitle">Servidor novo • Recriado • Comunidade em evolução</p>
+</header>
+
+<!-- INÍCIO -->
+<div id="inicio" class="neon">
+  <h2> SERVIDOR NOVO & RECOMENDANDO</h2>
+  <p>
+    Brasil Play Cidade Baixa é um servidor <b>recriado recentemente</b>, focado em RP limpo,
+    evolução constante e comunidade unida. Recomendado para quem quer crescer junto desde o início.
+  </p>
+
+<nav>
+  <button onclick="openTab('inicio')">Início</button>
+  <button onclick="openTab('admins')">Admins</button>
+  <button onclick="openTab('regras')">Regras</button>
+  <button onclick="openTab('downloads')">Downloads</button>
+</nav>
+
+<div id="inicio" class="section active">
+  <h2> BEM-VINDO</h2>
+  <p>Projeto recriado com foco em organização, respeito e diversão. Comece do zero e cresça com a comunidade.</p>
+  <p class="ip">IP: <b class="neon">168.222.251.98:2315</b></p>
+  <div class="copy" onclick="copiarIP()">COPIAR IP</div><br><br>
+  <a class="btn" href="https://discord.gg/6VrABRumj">ENTRAR NO DISCORD</a>
+</div>
+
+<div id="admins" class="section">
+  <h2> ADMINISTRAÇÃO</h2>
+  <div class="cards">
+    <div class="card"><h3>Dono</h3><span class="neon">The urso</span></div>
+    <div class="card"><h3>Dono</h3><span class="neon">Lucas</span></div>
+    <div class="card"><h3>Staff</h3><span class="neon">Staff Joker</span></div>
+    <div class="card"><h3>Administrador</h3><span class="neon">Filipe silva</span></div>
+  </div>
+</div>
+
+<div id="regras" class="section">
+  <h2> REGRAS</h2>
+  <div class="cards">
+    <div class="card"> Hacks / Cheats = BAN</div>
+    <div class="card"> Metagame / Powergaming</div>
+    <div class="card"> Falta de respeito</div>
+    <div class="card"> Staff tem palavra final</div>
+  </div>
+</div>
+
+<div id="downloads" class="section">
+  <h2> DOWNLOADS</h2>
+  <a class="btn" href="#">SA-MP PC (cole o link)</a>
+  <a class="btn" href="#">SA-MP Mobile</a>
+  <a class="btn" href="#">Winlator</a>
+</div>
+
+<footer>
+© 2026 • Brasil Play Cidade Baixa • Final
+</footer>
+
+<script>
+function openTab(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+function copiarIP(){
+  navigator.clipboard.writeText("168.222.251.98:2315");
+  alert("IP copiado!");
+}
+/* Partículas */
+const c=document.getElementById("particles"),ctx=c.getContext("2d");
+c.width=innerWidth;c.height=innerHeight;
+let p=[];
+for(let i=0;i<90;i++)p.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2+1,v:Math.random()+.2});
+function draw(){
+  ctx.clearRect(0,0,c.width,c.height);
+  p.forEach(o=>{
+    ctx.beginPath();ctx.arc(o.x,o.y,o.r,0,Math.PI*2);
+    ctx.fillStyle="rgba(166,107,255,.8)";ctx.fill();
+    o.y-=o.v;if(o.y<0)o.y=c.height;
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
+
+</body>
+</html>
